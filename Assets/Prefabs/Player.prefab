@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5149735219371956216}
   - component: {fileID: 4651044840767606667}
   - component: {fileID: 798898300689908552}
+  - component: {fileID: 3000885939070642648}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1843612354848692538}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.48, z: 0.18}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -137,6 +138,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &3000885939070642648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843612354848692538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e03b03e2f12434d91612fa6ffe4684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  sensitivity: 200
+  playerBody: {fileID: 7663112735622696247}
 --- !u!1 &4266252649230791834
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,11 +163,11 @@ GameObject:
   - component: {fileID: 7663112735622696247}
   - component: {fileID: 4433981562708084018}
   - component: {fileID: 2121178722399076320}
-  - component: {fileID: 5013394417845115772}
   - component: {fileID: 5335067973136284153}
   - component: {fileID: 951934208522181236}
+  - component: {fileID: 3280305996306434854}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 4266252649230791834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.477589, y: 1.001225, z: -1.3749151}
+  m_LocalPosition: {x: 23.477589, y: 1, z: -1.3749151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,29 +246,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5013394417845115772
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266252649230791834}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &5335067973136284153
 CharacterController:
   m_ObjectHideFlags: 0
@@ -293,6 +285,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   characterController: {fileID: 5335067973136284153}
   speedMultiplier: 5
+--- !u!136 &3280305996306434854
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4266252649230791834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5773329303875813429
 GameObject:
   m_ObjectHideFlags: 0
