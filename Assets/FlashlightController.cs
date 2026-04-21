@@ -18,5 +18,20 @@ public class FlashlightController : MonoBehaviour
             isOn = !isOn;
             lightSource.SetActive(isOn);
         }
+
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            // La lumière et le modèle regardent l'endroit que vous visez
+            lightSource.transform.LookAt(hit.point);
+            // Optionnel : faites aussi pivoter le modèle 3D vers hit.point
+        }
+        else
+        {
+            // Si vous regardez le ciel vide, la lumière pointe droit devant à 100m
+            lightSource.transform.LookAt(ray.GetPoint(100));
+        }
     }
 }
