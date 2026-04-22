@@ -2,11 +2,10 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Configuration")]
+
     public float interactionDistance = 3.0f; 
     public KeyCode interactKey = KeyCode.E;   
-    public Camera playerCamera;             
-
+    public Camera playerCamera;
     void Update()
     {
 
