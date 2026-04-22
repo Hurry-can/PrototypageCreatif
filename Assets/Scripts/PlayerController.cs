@@ -4,23 +4,27 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] CharacterController characterController;
 
-    public float speedMultiplier = 5;
+    public float speedMultiplier = 5f;
+   
 
+    private float verticalVelocity;
 
     void Update()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 input = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        Vector3 speed = input * speedMultiplier;
+        // Déplacement horizontal
+        Vector3 move = (transform.forward * moveVertical + transform.right * moveHorizontal) * speedMultiplier;
+
+        // Vérifie si le joueur touche le sol
 
 
+       
 
+        // Applique le déplacement total
+        move.y = verticalVelocity;
 
-        Vector3 moveDirection = (transform.forward * moveVertical + transform.right * moveHorizontal) * speedMultiplier * Time.deltaTime;
-
-        characterController.Move(moveDirection);
-
+        characterController.Move(move * Time.deltaTime);
     }
 }
