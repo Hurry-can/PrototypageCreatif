@@ -5,6 +5,11 @@ public class JournalManager : MonoBehaviour
     public GameObject livrePanel;
     private bool isBookOpen = false;
 
+    void start()
+    {
+        livrePanel.SetActive(false);
+    }
+
     void Update()
     {
         // Si on appuie sur Tab
@@ -17,6 +22,7 @@ public class JournalManager : MonoBehaviour
     void ToggleBook()
     {
         isBookOpen = !isBookOpen;
+
 
         livrePanel.SetActive(isBookOpen);
 
