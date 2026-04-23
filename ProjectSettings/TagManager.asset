@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Item
+  - Necklace
+  - Cintre
+  - Chaussure
+  - Montre
+  - Pantalon
   layers:
   - Default
   - TransparentFX
