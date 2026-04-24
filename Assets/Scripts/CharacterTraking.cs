@@ -4,13 +4,15 @@ using UnityEngine.AI;
 public class CharacterTraking : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Transform character;
+    [SerializeField] Transform playerTransform; // Le joueur
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    
+
     void Update()
     {
-        agent.SetDestination(character.position);
-        //agent.isStopped = true;
-    }
-
+            agent.isStopped = false;
+            agent.SetDestination(playerTransform.position);
+        }
+        
 }

@@ -5,16 +5,16 @@ public class JournalManager : MonoBehaviour
     public GameObject livrePanel;
     private bool isBookOpen = false;
 
-    [Header("UI Items")]
+
     public GameObject uiPantalon;
     public GameObject uiMontre;
     public GameObject uiChaussure;
     public GameObject uiCintre;
     public GameObject uiCollier;
 
-    // --- NOUVELLES VARIABLES POUR LA VICTOIRE ---
+
     private int itemsRestants = 5;
-    public GameObject ecranVictoire; // Un panel "Bravo !" à créer dans ton UI
+    public GameObject ecranVictoire; 
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class JournalManager : MonoBehaviour
         isBookOpen = !isBookOpen;
         livrePanel.SetActive(isBookOpen);
 
-        // Gestion du curseur et du temps
+
         Cursor.lockState = isBookOpen ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = isBookOpen;
         Time.timeScale = isBookOpen ? 0f : 1f;
@@ -43,7 +43,6 @@ public class JournalManager : MonoBehaviour
 
     public void RemoveItemFromJournal(string itemTag)
     {
-        // On vérifie quel item désactiver
         switch (itemTag)
         {
             case "Pantalon": if (uiPantalon.activeSelf) { uiPantalon.SetActive(false); itemsRestants--; } break;
@@ -68,7 +67,7 @@ public class JournalManager : MonoBehaviour
         {
             ecranVictoire.SetActive(true);
 
-            // On débloque la souris pour que le joueur puisse cliquer sur "Quitter" ou "Rejouer"
+
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             // Optionnel : figer le jeu

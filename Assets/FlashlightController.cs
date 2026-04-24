@@ -3,7 +3,7 @@ using UnityEngine;
 public class FlashlightController : MonoBehaviour
 {
     public GameObject lightSource;
-    private bool isOn = false;
+    public  bool isOn = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,13 +24,12 @@ public class FlashlightController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // La lumière et le modèle regardent l'endroit que vous visez
+
             lightSource.transform.LookAt(hit.point);
-            // Optionnel : faites aussi pivoter le modèle 3D vers hit.point
+
         }
         else
         {
-            // Si vous regardez le ciel vide, la lumière pointe droit devant à 100m
             lightSource.transform.LookAt(ray.GetPoint(100));
         }
     }
