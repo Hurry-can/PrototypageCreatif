@@ -8,11 +8,19 @@ public class CharacterTraking : MonoBehaviour
     [SerializeField] FlashlightController flashlight;
     [SerializeField] Vector3 offset = new Vector3(0, 1.0f, 0);
     [SerializeField] float LightAngle = 45;
-   
+    public float timer = 0;
+    public float JumpDistance = 2.0f;
+    [SerializeField] private GameObject screamerCanvas;
+
+
 
     void Update()
     {
-
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        if(distance<= JumpDistance)
+        {
+            TriggerScream();
+        }
 
         if (CanMove())
         {
@@ -23,7 +31,20 @@ public class CharacterTraking : MonoBehaviour
         {
             agent.isStopped = true;
         }
-            
+ 
+    }
+
+    void TriggerScream()
+    {
+        timer += Time.deltaTime;
+        Debug.Log("jumpScare");
+        screamerCanvas.SetActive(true);
+
+        if(timer>= 2.3)
+        {
+            Time.timeScale = 0;
+        }
+
     }
 
 
