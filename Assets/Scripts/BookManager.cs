@@ -56,6 +56,7 @@ public class JournalManager : MonoBehaviour
         if (itemsRestants <= 0)
         {
             GagnerLaPartie();
+            Time.timeScale = 0; ;
         }
     }
 
