@@ -14719,19 +14719,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2642807338686523220, guid: 36b712dd0789ce146a13a01ff9fad0e3, type: 3}
       propertyPath: m_fontColor.b
-      value: 0
+      value: 0.4188679
       objectReference: {fileID: 0}
     - target: {fileID: 2642807338686523220, guid: 36b712dd0789ce146a13a01ff9fad0e3, type: 3}
       propertyPath: m_fontColor.g
-      value: 0
+      value: 0.4188679
       objectReference: {fileID: 0}
     - target: {fileID: 2642807338686523220, guid: 36b712dd0789ce146a13a01ff9fad0e3, type: 3}
       propertyPath: m_fontColor.r
-      value: 0
+      value: 0.4188679
       objectReference: {fileID: 0}
     - target: {fileID: 2642807338686523220, guid: 36b712dd0789ce146a13a01ff9fad0e3, type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190080
+      value: 4285229931
       objectReference: {fileID: 0}
     - target: {fileID: 5096046502041577382, guid: 36b712dd0789ce146a13a01ff9fad0e3, type: 3}
       propertyPath: m_Pivot.x
