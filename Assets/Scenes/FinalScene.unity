@@ -601,6 +601,17 @@ Transform:
   - {fileID: 2143388908}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &225590209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2642807338686523220, guid: 36b712dd0789ce146a13a01ff9fad0e3, type: 3}
+  m_PrefabInstance: {fileID: 1562393616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &274347465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2846,6 +2857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1700877484}
   - component: {fileID: 1700877483}
+  - component: {fileID: 1700877485}
   m_Layer: 0
   m_Name: GamManager
   m_TagString: Untagged
@@ -2891,6 +2903,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1700877485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700877482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3354449875958574285c01d7fa2893e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameTimer
+  elapsedTime: 0
+  timerText: {fileID: 225590209}
+  gameOverPanel: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1 &1789910846
 GameObject:
   m_ObjectHideFlags: 0
