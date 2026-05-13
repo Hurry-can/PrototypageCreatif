@@ -1,9 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.AI; // AJOUT : Nécessaire pour NavMesh
-
-// AJOUT : Pour accéder à NavMeshSurface
-using Unity.AI.Navigation;
+using UnityEngine.AI;
 
 public class RoomManager : MonoBehaviour
 {
@@ -12,20 +9,6 @@ public class RoomManager : MonoBehaviour
 
     private Transform currentRoom;
     private Transform previousRoom;
-    private List<NavMeshSurface> navMeshSurfaces = new List<NavMeshSurface>();
-
-    void Start()
-    {
-        // AJOUT : On récupère toutes les NavMeshSurfaces au démarrage
-        foreach (Transform r in allRooms)
-        {
-            NavMeshSurface surface = r.GetComponent<NavMeshSurface>();
-            if (surface != null)
-            {
-                navMeshSurfaces.Add(surface);
-            }
-        }
-    }
 
     void Update()
     {
@@ -67,6 +50,7 @@ public class RoomManager : MonoBehaviour
         List<Transform> roomsToShuffle = new List<Transform>();
         List<Vector3> positions = new List<Vector3>();
 
+        // 1. Filtrage des pièces
         foreach (Transform r in allRooms)
         {
             if (r != roomA && r != roomB)
@@ -76,6 +60,7 @@ public class RoomManager : MonoBehaviour
             }
         }
 
+        // 2. Mélange des positions
         for (int i = 0; i < positions.Count; i++)
         {
             Vector3 temp = positions[i];
@@ -84,39 +69,31 @@ public class RoomManager : MonoBehaviour
             positions[randomIndex] = temp;
         }
 
+        // 3. OPTIMISATION : On coupe la navigation avant de bouger
+        // On récupère tous les agents des pièces qui vont bouger
+        List<NavMeshAgent> movingAgents = new List<NavMeshAgent>();
+        foreach (Transform r in roomsToShuffle)
+        {
+            movingAgents.AddRange(r.GetComponentsInChildren<NavMeshAgent>());
+        }
+
+        foreach (NavMeshAgent agent in movingAgents)
+        {
+            agent.enabled = false; // Désactive l'IA pour qu'elle ne panique pas pendant le TP
+        }
+
+        // 4. Déplacement physique (Téléportation)
         for (int i = 0; i < roomsToShuffle.Count; i++)
         {
             roomsToShuffle[i].position = positions[i];
         }
 
-        // --- AJOUT : LA CORRECTION POUR LE NAVMESH ---
-        // On force les PNJs à désactiver temporairement leur navigation pour qu'ils suivent le parent
-        foreach (NavMeshSurface surface in navMeshSurfaces)
+        // 5. On réactive les agents (Ils sont maintenant à leur nouvelle place avec la pièce)
+        foreach (NavMeshAgent agent in movingAgents)
         {
-            NavMeshAgent[] agents = surface.GetComponentsInChildren<NavMeshAgent>();
-            foreach (NavMeshAgent agent in agents)
-            {
-                agent.enabled = false;
-            }
+            agent.enabled = true;
         }
 
-        // On fait le "re-bake" de toutes les surfaces
-        foreach (NavMeshSurface surface in navMeshSurfaces)
-        {
-            // Cette fonction est optimisée pour être rapide
-            surface.BuildNavMesh();
-        }
-
-        // On réactive les agents
-        foreach (NavMeshSurface surface in navMeshSurfaces)
-        {
-            NavMeshAgent[] agents = surface.GetComponentsInChildren<NavMeshAgent>();
-            foreach (NavMeshAgent agent in agents)
-            {
-                agent.enabled = true;
-            }
-        }
-
-        Debug.Log("Shuffle effectué et NavMesh mis à jour !");
+        Debug.Log("Shuffle fluide terminé !");
     }
 }
